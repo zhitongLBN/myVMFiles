@@ -1,0 +1,18 @@
+{
+  "archi_guid": "0AB56FF5-820F-E511-94EB-00505694504C",
+  "blueprintid": "",
+  "customproperties": [
+ 
+  ],
+  "description": "a vm to test",
+  "imageid": 556,
+  "instancetype": 221,
+  "leasedays": 0,
+  "nbvm": 1,
+  "networkid": "EBC4470B-3810-E511-94EB-00505694504C",
+  "owner": "zhitogn",
+  "reason": "guess",
+  "reservation": 13,
+  "volumes": [
+  ]
+}

@@ -4,10 +4,10 @@ API Gateway
     cloud
             post /cloud/{cloud_account}/status
     fwpolicy
-            post /fwpolicy/create
-            put /fwpolicy/{fwpolicy_guid}/apply
+ok            post /fwpolicy/create
+ok            put /fwpolicy/{fwpolicy_guid}/apply
             put /fwpolicy/{fwpolicy_guid}/attachfwrule
-            delete /fwpolicy/{fwpolicy_guid}/delete
+ok            delete /fwpolicy/{fwpolicy_guid}/delete
             put /fwpolicy/{fwpolicy_guid}/detach
             put /fwpolicy/{fwpolicy_guid}/update
     fwrule
