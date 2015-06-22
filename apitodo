@@ -1,0 +1,40 @@
+
+API Gateway
+
+    cloud
+            post /cloud/{cloud_account}/status
+    fwpolicy
+            post /fwpolicy/create
+            put /fwpolicy/{fwpolicy_guid}/apply
+            put /fwpolicy/{fwpolicy_guid}/attachfwrule
+            delete /fwpolicy/{fwpolicy_guid}/delete
+            put /fwpolicy/{fwpolicy_guid}/detach
+            put /fwpolicy/{fwpolicy_guid}/update
+    fwrule
+            post /fwrule/create
+            delete /fwrule/{fwrule_guid}/delete
+            put /fwrule/{fwrule_guid}/detach
+            put /fwrule/{fwrule_guid}/update
+    snapshot
+            delete /snapshot/{snap_guid}/delete
+            put /snapshot/{snap_guid}/runclone
+            put /snapshot/{snap_guid}/rundisaster
+            put /snapshot/{snap_guid}/runlvlrecovery
+    vm
+ok            post /vm/create
+ok            put /vm/{vm_guid}/attachvolume
+ok            put /vm/{vm_guid}/changeinstancetype
+ok            delete /vm/{vm_guid}/delete
+ok            put /vm/{vm_guid}/detachpublicip
+ok            put /vm/{vm_guid}/requestpublicip
+ok            put /vm/{vm_guid}/restart
+ok            put /vm/{vm_guid}/start
+ok            put /vm/{vm_guid}/stop
+            put /vm/{vm_guid}/takesnapshot
+no            put /vm/{vmsrc_guid}/movepublicip
+ok    volume
+ok            post /volume/create
+ok            delete /volume/{vol_guid}/delete
+ok            put /volume/{vol_guid}/detach
+
+
