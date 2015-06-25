@@ -6,14 +6,14 @@ API Gateway
     fwpolicy
 ok            post /fwpolicy/create
 ok            put /fwpolicy/{fwpolicy_guid}/apply
-            put /fwpolicy/{fwpolicy_guid}/attachfwrule
+ok            put /fwpolicy/{fwpolicy_guid}/attachfwrule
 ok            delete /fwpolicy/{fwpolicy_guid}/delete
             put /fwpolicy/{fwpolicy_guid}/detach
-            put /fwpolicy/{fwpolicy_guid}/update
+no            put /fwpolicy/{fwpolicy_guid}/update
     fwrule
-            post /fwrule/create
-            delete /fwrule/{fwrule_guid}/delete
-            put /fwrule/{fwrule_guid}/detach
+ok            post /fwrule/create
+no            delete /fwrule/{fwrule_guid}/delete
+ok            put /fwrule/{fwrule_guid}/detach
             put /fwrule/{fwrule_guid}/update
     snapshot
             delete /snapshot/{snap_guid}/delete

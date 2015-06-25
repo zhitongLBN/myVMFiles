@@ -1,0 +1,28 @@
+{
+  "action": "Allow",
+  "archi_guid": "0AB56FF5-820F-E511-94EB-00505694504C",
+  "customproperties": [
+    {
+      "key": "rule_bound_type",
+      "value": "Inbound"
+    },
+    {
+      "key": "priority",
+      "value": "200"
+    },
+    {
+      "key": "fw_guid",
+      "value": "25F0860E-9019-E511-94EB-00505694504C"
+    }
+  ],
+  "destination_ip_address": "*",
+  "destination_port": "21",
+  "enabled": true,
+  "ip_version": 4,
+  "name": "FTP_In",
+  "protocol": "TCP",
+  "reservation": 13,
+  "shared": true,
+  "source_ip_address": "*",
+  "source_port": "*"
+}
