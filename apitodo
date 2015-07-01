@@ -8,14 +8,15 @@ ok            post /fwpolicy/create
 ok            put /fwpolicy/{fwpolicy_guid}/apply
 ok            put /fwpolicy/{fwpolicy_guid}/attachfwrule
 ok            delete /fwpolicy/{fwpolicy_guid}/delete
-            put /fwpolicy/{fwpolicy_guid}/detach
+ok            put /fwpolicy/{fwpolicy_guid}/detach 	-should add vm in json
 no            put /fwpolicy/{fwpolicy_guid}/update
     fwrule
 ok            post /fwrule/create
 no            delete /fwrule/{fwrule_guid}/delete
 ok            put /fwrule/{fwrule_guid}/detach
-            put /fwrule/{fwrule_guid}/update
+ok            put /fwrule/{fwrule_guid}/update
     snapshot
+ok		take snapshot
             delete /snapshot/{snap_guid}/delete
             put /snapshot/{snap_guid}/runclone
             put /snapshot/{snap_guid}/rundisaster
