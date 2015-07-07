@@ -18,9 +18,9 @@ ok            put /fwrule/{fwrule_guid}/update
     snapshot
 ok		take snapshot
 ok            delete /snapshot/{snap_guid}/delete
-            put /snapshot/{snap_guid}/runclone
-            put /snapshot/{snap_guid}/rundisaster
-            put /snapshot/{snap_guid}/runlvlrecovery
+ok            put /snapshot/{snap_guid}/runclone
+ok            put /snapshot/{snap_guid}/rundisaster
+ok            put /snapshot/{snap_guid}/runlvlrecovery
     vm
 ok            post /vm/create
 ok            put /vm/{vm_guid}/attachvolume
