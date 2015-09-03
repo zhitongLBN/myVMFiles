@@ -1,0 +1,1 @@
+* * * * * /home/lzt/lbn/sd-gateway/env/bin/python /home/lzt/lbn/sd-gateway/bin/dbprovidersync-sdgw.py > /home/lzt/lbn/sd-gateway/logs/dbprovidersync-sdgw.log 2>&1

@@ -1,0 +1,1 @@
+kill -9 `ps -ef | grep apiv1 | grep worker| grep -v grep|awk '{print $2}'`

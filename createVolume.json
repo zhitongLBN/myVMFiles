@@ -1,9 +1,9 @@
 {
   "archi_guid": "0AB56FF5-820F-E511-94EB-00505694504C",
-  "description": "nop",
-  "name": "a disk",
-  "owner": "zhitong",
+  "description": "string",
+  "name": "string",
+  "owner": "vcac_srv",
   "reservation": 13,
   "size": 1,
-  "vm_guid": "BEA96D21-D41F-E511-8735-00505694504C"
+  "vm_guid": "21D0A7DC-C340-E511-8735-00505694504C"
 }
