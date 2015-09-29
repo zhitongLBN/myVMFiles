@@ -1,0 +1,12 @@
+{
+  "activate": false,
+  "archi_guid": "0AB56FF5-820F-E511-94EB-00505694504C",
+  "customproperties": [
+    {
+      "key": "location_guid",
+      "value": "1"
+    }
+  ],
+  "name": "window_basic_firewall",
+  "reservation": 13
+}

@@ -1,25 +1,19 @@
+
 {
-  "action": "Allow",
+  "action": "ALLOW",
   "archi_guid": "0AB56FF5-820F-E511-94EB-00505694504C",
+  "bound": "IN",
   "customproperties": [
     {
-      "key": "bound",
-      "value": "IN"
-    },
-    {
-      "key": "policy",
-      "value": "25F0860E-9019-E511-94EB-00505694504C"
+      "key": "string",
+      "value": "string"
     }
   ],
-  "priority": 400,
-  "destination_ip_address": "ALL",
-  "destination_port": "22",
-  "enabled": true,
-  "ip_version": 4,
-  "name": "SSH_In",
+  "ip_address": "ALL",
+  "name": "RDP_3389",
+  "port": "3389",
+  "priority": "400",
   "protocol": "TCP",
-  "reservation": 15,
-  "shared": true,
-  "source_ip_address": "ALL",
-  "source_port": "ALL"
+  "reservation": 13,
+  "sgpolicy_guid": "E21D31F4-B466-E511-A809-00505694504C"
 }
