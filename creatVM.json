@@ -10,6 +10,7 @@
   "leasedays": 0,
   "schedule_guid": 3,
   "nbvm": 1,
+  "schedule_guid": 3,
   "networkid": "EBC4470B-3810-E511-94EB-00505694504C",
   "owner": "vcac_srv",
   "reason": "guess",
