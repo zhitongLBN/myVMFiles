@@ -1,0 +1,14 @@
+*list tags
+    git tag
+*add tag 
+    git tag -a v1.0 -m 'message'
+*show tag version info
+    git show v1.0 [-p]
+*delete tag
+    git tag -d v1.0
+*add tag to a previous commit
+    git tag -a v1.0 9fceb02
+*push all tag modifies
+    git push origin --tags
+*revert to tag
+    git reset --hard v1.0

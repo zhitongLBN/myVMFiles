@@ -1,0 +1,13 @@
+{"blueprintid":"D813109A-E15C-4F25-86D1-645589E1D52A",
+"description":"test for loic",
+"imageid":549,
+"instancetype":215,
+"leasedays":42,
+"nbvm":1,
+"networkid":"1DD0D2A2-700F-E511-94EB-00505694504C",
+"owner":"vcac_srv",
+"reason":"",
+"reservation":12,
+"archi_guid":"F8D578D9-890E-E511-94EB-00505694504C",
+"volumes":[],
+"schedule_guid":3} 
