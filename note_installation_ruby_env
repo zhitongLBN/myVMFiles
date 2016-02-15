@@ -1,0 +1,33 @@
+install ruby
+    sudo apt-get install ruby-dev
+install gem
+    sudo apt-get install rubygems
+    sudo gem update --system
+install rvm
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    \curl -sSL https://get.rvm.io | bash -s stable --ruby
+    \curl -sSL https://get.rvm.io | bash -s stable --rails
+install irbtools
+    sudo gem install irbtools 
+    echo "require \'irbtools\'" >> ~.irbrc
+    ***in your gemfile need to add 
+     gem 'irbtools', require: 'irbtools/binding'
+    *** start irb with 
+     binding.irb
+install gemsmith
+    gem install gemsmith 
+    *** write informations in ~/.gemsmithrc
+    :author:
+        :name: "Zhitong Liu"
+        :email: "z.liu@linkbynet.com"
+        :url: "www.linkbynet.com"
+    :organization:
+        :name: "LINKBYNET"
+        :url: "www.linkbynet.com"
+        
+create gem with gemsmith 
+    gemsmith --create my-gem
+
+install fog in projet 
+    sudo gem install fog
+    echo "gem 'fog'" > Gemfile
