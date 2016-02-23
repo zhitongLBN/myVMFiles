@@ -16,6 +16,7 @@ install irbtools
      binding.irb
 install gemsmith
     gem install gemsmith 
+    gem install gemsmith --version 2.2.0
     *** write informations in ~/.gemsmithrc
     :author:
         :name: "Zhitong Liu"
