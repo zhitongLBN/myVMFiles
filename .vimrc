@@ -1,9 +1,19 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
+" ZT Vim Config
+" -----------------------------------------------------------------------------
+" Plugins_Sesstion
+" Global_Setting_Session
+" Interface_Setting_Session
+" Edit_setting_Session
+" Navigation_Setting_Session
+" Search_Setting_Session
+" Filetype_And_Syntax_Setting_Session
+" Developpeur_settion_Settion
+" Custom_Functions_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ---------------------------------------------------
-" Plugins
+" Plugins_Sesstion
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
@@ -21,11 +31,18 @@ Plug 'gcmt/taboo.vim'
 " A Vim plugin which shows a git diff in the 'gutter' (sign column)
 Plug 'airblade/vim-gitgutter'
 
+" view git in vim
+Plug 'tpope/vim-fugitive'
+
 " True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'
 
 " mouse
 " Plug 'nvie/vim-togglemouse'
+
+" vim-expand-region is a Vim plugin that allows you to visually select
+" increasingly larger regions of text using the same key
+" Plug 'terryma/vim-expand-region'
 
 " fzf is a general-purpose command-line fuzzy finder.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -37,7 +54,10 @@ Plug 'tpope/vim-surround'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 
 " Run your favorite search tool from Vim, with an enhanced results list.
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
+
+" LustyExplorer is a fast and responsive way to manage files and buffers in Vim
+Plug 'vim-scripts/LustyExplorer'
 
 " Vim plugin that displays tags in a window
 " mayneedtoinstallCTAGS
@@ -66,7 +86,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Maintains a history of previous yanks, changes and deletes
-" Plug 'https://github.com/vim-scripts/YankRing.vim'
+" Plug 'vim-scripts/YankRing.vim'
 
 " Comment stuff out. Use gcc to comment out a line (takes a count)
 Plug 'https://github.com/tpope/vim-commentary'
@@ -115,8 +135,10 @@ call plug#end()
 " Customs
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" global setting
+" Global_Setting_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hidden
+
 " key , for leader key
 let mapleader = ','
 
@@ -134,8 +156,10 @@ nmap <leader>p :call PasteToggle()<cr>
 let g:system_copy#copy_command='xclip -sel clipboard'
 let g:system_copy#paste_command='xclip -sel clipboard -o'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" interface setting
+" Interface_Setting_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap H  :call HightLightCursor() <cr>
+
 " air-line custom
 " preference
 let g:airline_theme="bubblegum"
@@ -145,11 +169,11 @@ let g:airline_theme="bubblegum"
 
 " enable colors
 if ! has("gui_running")
- set guioptions-=T
- set guioptions-=e
- set t_Co=256
- " set guitablabel=%M\ %t
- set guitablabel=%t
+  set guioptions-=T
+  set guioptions-=e
+  set t_Co=256
+  " set guitablabel=%M\ %t
+  set guitablabel=%t
 endif
 " " feel free to choose :set background=light for a different style
 " set background=dark
@@ -179,9 +203,22 @@ set relativenumber
 " Plugin - taboo.vim
 set guioptions-=e
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" edit setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin - fugitive
+nmap <leader>ge :Gedit <CR>
+nmap <leader>gs :Gstatus <CR>
+nmap <leader>gb :Gblame <CR>
+nmap <leader>gd :Gdiff <CR>
+nmap <leader>gl :Glog <CR>
+nmap [q :cprev <CR>
+nmap ]q :cnext <CR>
+nmap <leader>dh :diffget //2 <CR>
+nmap <leader>dl :diffget //3 <CR>
+
+" close all panes except current
+nmap <leader>o :only <CR>
+"""""""""""""" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Edit_setting_Session
+"""""""""""""" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tab space
 set shiftwidth=2
 set tabstop=2
@@ -192,24 +229,31 @@ set ai
 set si
 set wrap
 
+" nmap J :join<CR>
+
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 nmap s <S-s>
 
 " use "key  to comment lines
-vmap " gcc
-nmap " gcc
+" vmap " gcc
+" nmap " gcc
 " Plugin - YankRing setting
 " nmap <leader>y :YRShow<CR>
 
 " auto remove trailling space when saving
 autocmd BufWritePre * :call StripTrailingWhitespace()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" navigation setting
+" Navigation_Setting_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin - tagbar setting
 " key _ to open tag bar
+
+" Treat long lines as break lines (useful when moving around in them):
+" map j gj
+" map k gk
+
 nmap _ :TagbarToggle<CR>
 let g:tagbar_left = 1
 
@@ -226,6 +270,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " map <C-k> <C-W>k
 " map <C-h> <C-W>h
 " map <C-l> <C-W>l
+
 
 " switch tab
 nmap <c-h> gT
@@ -252,6 +297,7 @@ nnoremap <Leader>m :call ToggleMouse()<CR>
 " key + to open nerd tree
 " nmap + :NERDTreeToggle<cr>
 nmap + <plug>NERDTreeTabsToggle<CR>
+
 " let nerdtree open at right
 let g:NERDTreeWinPos = "right"
 nmap \ <plug>NERDTreeTabsFind<CR>
@@ -259,7 +305,6 @@ nmap \ <plug>NERDTreeTabsFind<CR>
 
 " change number line absolute or relative
 nmap <leader>L :call NumberToggle()<cr>
-
 
 " foldings setting
 set foldmethod=indent   "fold based on indent
@@ -274,7 +319,7 @@ nmap <leader>r :MRU<cr>
 nmap <C-j> :call TabMove(-1)<CR>
 nmap <C-k> :call TabMove(1)<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" search setting
+" Search_Setting_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set incsearch
 set magic
@@ -285,11 +330,8 @@ set hlsearch
 " Use space key to research
 nmap <Space> /
 
-" map leader a to use ack
-nmap <leader>a :Ack
-
 " Plugin - ctrlp setting
-" nmap <leader>p :CtrlP<CR>
+" nmap <c-p> :CtrlP<CR>
 
 " Plugin - easy moiton
 " <Leader>f{char} to move to {char}
@@ -307,8 +349,29 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+" Plugin - LustyExplorer setting
+map <Leader>g :LustyBufferGrep<CR>
+" LustyExplorer default setting
+" Instructions:
+
+"       :LustyFilesystemExplorer
+"       :LustyFilesystemExplorerFromHere
+"       :LustyBufferExplorer
+"       :LustyBufferGrep (for searching through all open buffers)
+
+"       <Leader>lf  - Opens filesystem explorer.
+"       <Leader>lr  - Opens filesystem explorer at the directory of the current file.
+"       <Leader>lb  - Opens buffer explorer.
+"       <Leader>lg  - Opens buffer grep.
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" filetype & syntax setting
+" Filetype_And_Syntax_Setting_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax color display
 " set syntax=on
@@ -319,9 +382,12 @@ set encoding=utf8
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" functions
+" Developpeur_settion_Settion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>e :call RunCurrentFile()<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom_Functions_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " relative number line or absolute
 function! NumberToggle()
@@ -361,7 +427,7 @@ function! StripTrailingWhitespace()
   let l:chars = col("$")
   %s/\s\+$//e
   " if (line("'Z") != line(".")) || (l:chars != col("$"))
-    " echo "Trailing whitespace stripped\n"
+  " echo "Trailing whitespace stripped\n"
   " endif
   normal `Z
 endfunction
@@ -370,20 +436,62 @@ endfunction
 "
 " @param direction -1 for left, 1 for right.
 function! TabMove(direction)
-    " get number of tab pages.
-    let ntp=tabpagenr("$")
-    " move tab, if necessary.
-    if ntp > 1
-        " get number of current tab page.
-        let ctpn=tabpagenr()
-        " move left.
-        if a:direction < 0
-            let index=((ctpn-1+ntp-1)%ntp)
-        else
-            let index=(ctpn%ntp)
-        endif
-
-        " move tab page.
-        execute "tabmove ".index
+  " get number of tab pages.
+  let ntp=tabpagenr("$")
+  " move tab, if necessary.
+  if ntp > 1
+    " get number of current tab page.
+    let ctpn=tabpagenr()
+    " move left.
+    if a:direction < 0
+      let index=((ctpn-1+ntp-1)%ntp)
+    else
+      let index=(ctpn%ntp)
     endif
+
+    " move tab page.
+    execute "tabmove ".index
+  endif
+endfunction
+
+function! VisualSelection(direction, extra_filter) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("Ag \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
+
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction
+
+function! HightLightCursor()
+  set cursorline!
+  set cursorcolumn!
+
+  hi cursorline cterm=none ctermbg=237 ctermfg=NONE
+  hi cursorcolumn cterm=none ctermbg=237 ctermfg=NONE
+endfunction
+
+function! RunCurrentFile()
+  let ft = echo &ft
+  if &ft == 'vim'
+    :so %
+  elseif &ft == 'ruby'
+    :!ruby %
+  elseif (&ft == 'c' || &ft == 'cpp')
+    :!g++ %
+  elseif &ft == 'sh'
+    :!%:p
+  endif
 endfunction
