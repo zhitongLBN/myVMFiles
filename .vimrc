@@ -10,6 +10,7 @@
 " Filetype_And_Syntax_Setting_Session
 " Developpeur_settion_Settion
 " Custom_Functions_Session
+" Macro
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ---------------------------------------------------
@@ -37,6 +38,12 @@ Plug 'tpope/vim-fugitive'
 " True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'
 
+" True Sublime Text style multiple selections for Vim
+Plug 'awochna/vim-raml'
+
+" This plugin is a front for ag
+Plug 'rking/ag.vim'
+
 " mouse
 " Plug 'nvie/vim-togglemouse'
 
@@ -49,6 +56,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
@@ -125,6 +133,9 @@ Plug 'vim-ruby/vim-ruby'
 " rails syntax
 Plug 'tpope/vim-rails'
 
+" HCL
+Plug 'b4b4r07/vim-hcl'
+
 " Other-------------------------------------------------------
 Plug 'vimwiki/vimwiki'
 
@@ -137,6 +148,10 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Global_Setting_Session
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" no swp files
+set nobackup
+set noswapfile
+
 set hidden
 
 " key , for leader key
@@ -207,12 +222,13 @@ set guioptions-=e
 nmap <leader>ge :Gedit <CR>
 nmap <leader>gs :Gstatus <CR>
 nmap <leader>gb :Gblame <CR>
-nmap <leader>gd :Gdiff <CR>
+nmap <leader>gd :Gvdiff <CR>
 nmap <leader>gl :Glog <CR>
+nmap <leader>gw :Gwrite <CR>
 nmap [q :cprev <CR>
 nmap ]q :cnext <CR>
-nmap <leader>dh :diffget //2 <CR>
-nmap <leader>dl :diffget //3 <CR>
+nmap <leader>dh :diffget //2 <CR> :diffupdate <CR>
+nmap <leader>dl :diffget //3 <CR> :diffupdate <CR>
 
 " close all panes except current
 nmap <leader>o :only <CR>
@@ -235,6 +251,7 @@ set wrap
 let g:UltiSnipsEditSplit="vertical"
 
 nmap s <S-s>
+nmap ; %
 
 " use "key  to comment lines
 " vmap " gcc
@@ -264,6 +281,7 @@ let g:tagbar_left = 1
 let g:UltiSnipsExpandTrigger="<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:ycm_filetype_blacklist = { 'yaml': 1 }
 
 " Smart way to move between windows
 " map <C-j> <C-W>j
@@ -335,6 +353,7 @@ nmap <Space> /
 
 " Plugin - easy moiton
 " <Leader>f{char} to move to {char}
+let g:EasyMotion_do_mapping = 0
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
@@ -357,6 +376,11 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 " Plugin - LustyExplorer setting
 map <Leader>g :LustyBufferGrep<CR>
+
+" Plugin - ag.vim
+map <Leader>a :Ag --ignore 'tags' --ignore '*.yml' \
+let g:ag_working_path_mode="r"
+
 " LustyExplorer default setting
 " Instructions:
 
@@ -376,6 +400,8 @@ map <Leader>g :LustyBufferGrep<CR>
 " Syntax color display
 " set syntax=on
 syntax enable
+" autocmd BufNewFile,BufRead,FileReadPre *.yml set syntax=false
+nmap <leader>s :call SyntaxToggle()<CR>
 
 set encoding=utf8
 
@@ -406,6 +432,16 @@ function! PasteToggle()
     set paste
   endif
 endfunc
+
+" toggle Syntax on off
+function! SyntaxToggle()
+  if exists("g:syntax_on")
+    syntax off
+  else
+    syntax enable
+  endif
+endfunc
+
 
 function! ToggleMouse()
   if !exists("s:old_mouse")
@@ -495,3 +531,36 @@ function! RunCurrentFile()
     :!%:p
   endif
 endfunction
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Macro
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" \...  three-digit octal number (e.g., "\316")
+" \.. two-digit octal number (must be followed by non-digit)
+" \.  one-digit octal number (must be followed by non-digit)
+" \x..  byte specified with two hex numbers (e.g., "\x1f")
+" \x. byte specified with one hex number (must be followed by non-hex char)
+" \X..  same as \x..
+" \X. same as \x.
+" \u....  character specified with up to 4 hex numbers, stored according to
+" the
+"   current value of 'encoding' (e.g., "\u02a4")
+"   \U....  same as \u....
+"   \b  backspace <BS>
+"   \e  escape <Esc>
+"   \f  formfeed <FF>
+"   \n  newline <NL>
+"   \r  return <CR>
+"   \t  tab <Tab>
+"   \\  backslash
+"   \"  double quote
+"   \<xxx>  Special key named "xxx".  e.g. "\<C-W>" for CTRL-W.  This is for
+"   use
+"     in mappings, the 0x80 byte is escaped.  Don't use <Char-xxxx> to get a
+"       utf-8 character, use \uxxxx as mentioned above.
+
+" ruby hash stringfy
+let @h = "0viwS'f:xa=> \ej"
+" ruby hash symbolify
+let @s = "0ds'f=xxhi:\elx\ej"
+" add new line after ,
+call setreg('n', "f,a\n\e")
